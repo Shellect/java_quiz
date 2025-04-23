@@ -1,0 +1,30 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Выбор категории</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h1 class="text-center">Выберите категорию вопросов:</h1>
+            <form th:action="@{/start}" method="post">
+                <div th:each="category: ${categories}" class="mb-3">
+                    <input type="radio" th:name="category" th:id="${category.name()}" th:value="${category}" class="form-check-input" required>
+                    <label th:for="${category.name()}" class="form-check-label" th:text="${category.displayName}"></label>
+                </div>
+                <div class="d-grid mt-3">
+                    <button type="submit" class="btn btn-success">Начать тест</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
