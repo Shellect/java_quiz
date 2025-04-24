@@ -15,21 +15,27 @@
         <div class="col-6 offset-3">
             <form th:action="@{/result}" method="post">
                 <h1>Вопросы категории "<span class="text-primary" th:text="${category.displayName}"></span>"</h1>
-                <div th:each="question, iterStat: ${questions}" class="border rounded mt-3 p-3">
-                    <h3 class="text-primary" th:text="${iterStat.count + '. ' + question.text}"></h3>
+                <div th:each="question, questionStat : ${questions}" class="border rounded mt-3 p-3">
+                    <h3 class="text-primary" th:text="${questionStat.count + '. ' + question.text}"></h3>
+                    <input type="hidden" name="questionId" th:value="${question.id}">
                     <div th:if="${question.options}">
-                        <div th:each="option: ${question.options}">
+                        <div th:each="option, optionStat : ${question.options}">
                             <input type="radio" class="form-check-input"
-                                   th:id="${'q' + question.id + optionStat.index}"
-                                   th:name="${'question[' + question.id + ']'}"
+                                   th:id="${'q' + question.id + '-' + optionStat.index}"
+                                   name="answer"
                                    th:value="${option}"
                                    required>
-                            <label th:for="${'q' + question.id + optionStat.index}" class="form-check-label"
+                            <label th:for="${'q' + question.id + '-' + optionStat.index}" class="form-check-label"
                                    th:text="${option}"></label>
                         </div>
                     </div>
                     <div th:unless="${question.options}">
-                        <textarea cols="30" rows="10" class="form-control" required></textarea>
+                        <textarea cols="30"
+                                  rows="10"
+                                  class="form-control"
+                                  th:name="'answer[' + ${questionStat.index} + ']'"
+                                  th:value="${option}"
+                                  required></textarea>
                     </div>
                     <div class="d-grid mt-3">
                         <button type="submit" class="btn btn-success">Завершить тест</button>

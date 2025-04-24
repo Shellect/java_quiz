@@ -16,9 +16,9 @@
             Результаты тестирования
             <ul th:each="answer: ${answers}">
                 <li>
-                    <p th:text="'Вопрос: ' + answer.questionText"></p>
-                    <p th:text="'Ваш ответ: ' + answer.userAnswer"></p>
-                    <p th:text="'Результат: ' + answer.correct ? 'Правильно' : 'Неправильно'"></p>
+                    <p th:text="'Вопрос: ' + ${answer.questionText}"></p>
+                    <p th:text="'Ваш ответ: ' + ${answer.userAnswer}"></p>
+                    <p th:text="'Результат: ' + ${answer.correct ? 'Правильно' : 'Неправильно'}"></p>
                 </li>
             </ul>
         </div>
