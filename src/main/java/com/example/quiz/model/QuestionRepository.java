@@ -38,6 +38,31 @@ public class QuestionRepository {
                 Category.CULTURE, null,
                 "Гжель")
         );
+
+        questions.add(new Question(5L, "Кто был первым президентом США?",
+                Category.HISTORY,
+                List.of("Джордж Вашингтон", "Томас Джефферсон", "Авраам Линкольн", "Бенджамин Франклин"),
+                "Джордж Вашингтон"));
+
+        questions.add(new Question(6L, "В каком году произошла Великая Октябрьская социалистическая революция?",
+                Category.HISTORY,
+                List.of("1917", "1905", "1922", "1941"),
+                "1917"));
+
+        questions.add(new Question(7L, "Как называлась первая столица Древней Руси?",
+                Category.HISTORY,
+                null,
+                "Новгород"));
+
+        questions.add(new Question(8L, "Какая страна выиграла больше всего чемпионатов мира по футболу?",
+                Category.SPORT,
+                List.of("Германия", "Бразилия", "Италия", "Аргентина"),
+                "Бразилия"));
+
+        questions.add(new Question(9L, "Какой спортсмен имеет наибольшее количество олимпийских золотых медалей?",
+                Category.SPORT,
+                null,
+                "Майкл Фелпс"));
     }
 
     public List<Question> findByCategory(Category category) {
